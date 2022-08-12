@@ -1,0 +1,99 @@
+@import "mixins";
+html {
+  line-height: 100%;
+}
+.wrap-label{
+  max-width: 1440px;
+  margin: auto;
+  @include mediaMaxWidth(1440px){
+    max-width: 1200px;
+  }
+  @include mediaMaxWidth(1200px){
+    max-width: 100%;
+    padding: 0 30px;
+  }
+  @include mediaMaxWidth(480px){
+    padding: 0 15px;
+  }
+}
+.intro-item-label{
+  margin-bottom: 27px;
+  .item-title{
+    font-size: 29px;
+    line-height: 36px;
+    margin-bottom: 9px;
+    font-weight: 700;
+    @include mediaMaxWidth(1366px){
+      font-size: 20px;
+      margin-bottom: 8px;
+      line-height: normal;
+    }
+    @include mediaMaxWidth(1024px){
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+  .item-description{
+    font-size: 15px;
+    line-height: 23px;
+    @include mediaMaxWidth(1366px){
+      line-height: normal;
+    }
+    @include mediaMaxWidth(480px){
+      font-size: 14px;
+      line-height: 17px;
+      color: #FFFBFB;
+      opacity: 0.6;
+    }
+  }
+}
+.cl-branding{
+  color: #C74FFF;
+}
+.pr-58{
+  padding-right: 58px;
+}
+
+#fp-nav ul li{
+  height: auto;
+  width: auto;
+}
+#fp-nav ul li a{
+  height: 7px;
+  width: 7px;
+  // background: #fff;
+  border: solid 1px #ffffffad;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.5s;
+  &::after{
+    content: "";
+    position: absolute;
+    height: 0px;
+    width: 2px;
+    top: 13px;
+    border-radius: 5px;
+    left: 1px;
+    background: #C74FFF;
+    transition: all 0.5s;
+  }
+  &.active{
+    margin-bottom: 50px;
+    &::after{
+      height: 35px;
+    }
+  }
+}
+
+#fp-nav ul li a span{
+  display: none;
+}
+
+#fp-nav.fp-right{
+  transition: all 0.6s;
+  transition-delay: 0.4s;
+  right: -50px;
+  &.js-show-pagination{
+    right: 17px;
+  }
+}

@@ -1,0 +1,48 @@
+image: node:16.13.0
+# Cache node modules - speeds up future builds
+cache:
+  paths:
+    - node_modules
+
+stages:
+  - build
+  - refresh
+
+.yarn_build:
+  script: |
+    yarn
+    CI=false yarn build:cdn $QN_accessKey $QN_secretKey
+  artifacts:
+    paths:
+      - ./build
+
+yarn_dev:
+  extends: .yarn_build
+  stage: build
+  tags:
+    - txCloud
+  before_script:
+    - export APP_ENV="dev"
+  only:
+    refs:
+      - cdn
+
+#yarn_prod:
+#  extends: .yarn_build
+#  stage: build
+#  before_script:
+#    - export APP_ENV="prod"
+#  only:
+#    refs:
+#      - main
+
+# refresh cdn
+refresh-job:
+  stage: refresh
+  only:
+    refs:
+      - cdn
+  tags:
+    - txCloud
+  script:
+    - bash publish.sh $refreshUrl
