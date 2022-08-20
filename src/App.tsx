@@ -164,7 +164,7 @@ function App() {
                 <SplideSlide key="2">
                     <div className="section2">
                         <div className="title1">Technical modules</div>
-                        <div className="title2">Cmail offers a new generalization of email services with four technical modules. </div>
+                        <div className="title2">Cmail offers a new generation of email services with four technical modules. </div>
                         <div className="module-area">
                             <div className="module">
                                 <img src={require('./assets/images/c3.png')}/>
