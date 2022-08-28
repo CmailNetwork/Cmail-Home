@@ -163,7 +163,7 @@ function App() {
                 </SplideSlide>
                 <SplideSlide key="2">
                     <div className="section2">
-                        <div className="title1">Technical modules</div>
+                        <div className="title1">Modules</div>
                         <div className="title2">Cmail offers a new generation of email services with four technical modules. </div>
                         <div className="module-area">
                             <div className="module">
@@ -176,7 +176,7 @@ function App() {
                             </div>
                             <div className="module">
                                 <img src={require('./assets/images/c2.png')}/>
-                                <span>On-chain docusign</span>
+                                <span>On-chain eSignature</span>
                             </div>
                             <div className="module">
                                 <img src={require('./assets/images/c4.png')}/>
@@ -187,7 +187,7 @@ function App() {
                 </SplideSlide>
                 <SplideSlide key="3">
                     <div className="section3">
-                        <div className="title1">Product characteristics</div>
+                        <div className="title1">Features</div>
                         <div className="icon-area" >
                             <div className="main-text">Cmail manages to deliver information and value simultaneously among on-chain and off-chain users in a friendly way. The characteristics are as follows.</div>
                             <>{textList.map(item => {
@@ -237,7 +237,7 @@ function App() {
                             <div className="t6">
                                 2023 Q2<br/>
                                 Multi-chain<br/>
-                                On-chain docusign
+                                On-chain eSignature
                             </div>
                         </div>
                     </div>
