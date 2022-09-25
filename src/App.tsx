@@ -16,6 +16,29 @@ import MetaMaskOnboarding from '@metamask/onboarding';
 const { isMetaMaskInstalled } = MetaMaskOnboarding;
 
 const discordUrl = 'https://discord.gg/g9xE4tUrY5'
+
+const getQuery = (q: string)=> {
+    return (window.location.search.match(new RegExp('[?&]' + q + '=([^&]+)')) || [, null])[1];
+}
+let firstIndex = 0
+try {
+    const module = getQuery('module');
+    switch (module) {
+        case 'm':
+            firstIndex = 1
+            break
+        case 'c':
+            firstIndex = 2
+            break
+        case 'r':
+            firstIndex = 3
+            break
+        default:
+            break
+    }
+} catch (e) {
+
+}
 function App() {
     const [hamburgerClick, setHamburgerClick] = useState(false);
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -96,7 +119,6 @@ function App() {
     }
 
     useEffect(() => {
-        console.log('welcome')
         AOS.init();
         AOS.refresh();
     }, []);
@@ -113,7 +135,7 @@ function App() {
                     <div className="mn-item" onClick={(e) => goSlide(1)}>Modules</div>
                     <div className="mn-item" onClick={(e) => goSlide(2)}>Characteristics</div>
                     <div className="mn-item"  onClick={(e) => goSlide(3)}>Roadmap</div>
-                    <a className="mn-item" href="" onClick={()=> alert('coming soon')}>Docs</a>
+                    <a className="mn-item" target="_blank" href="https://chainmail-network.gitbook.io/introduction/" >Docs</a>
                     <a className="mn-item button_label"  onClick={showModal}></a>
                 </div>
             </header>
@@ -126,6 +148,7 @@ function App() {
                 drag: !hamburgerClick,
                 speed: 600,
                 pagination: false,
+                start: firstIndex,
             }} tag="section" ref={ splideRef }  onActive={onSlideActive}>
                 <SplideSlide key="1">
                     <div className="section1">
@@ -147,16 +170,19 @@ function App() {
                                     <div className="icon1">
                                         <img src={require('./assets/images/id-icon.png')}/>
                                         <span>Decentralized ID</span>
+                                        <a href={discordUrl} target="_blank" className="btn-join">
+                                            <div/>
+                                        </a>
                                     </div>
                                     <div className="icon2">
                                         <img src={require('./assets/images/letter.png')}/>
                                         <span>On-chain email</span>
+                                        <a href='//mintsbt.cmail.network' target="_blank" className="btn-mint">
+                                            <div/>
+                                        </a>
                                     </div>
                                 </div>
-                                <a href={discordUrl} target="_blank" className="btn-join" data-aos-anchor=".section1"
-                                   data-aos="cut-right" data-aos-duration="1000" data-aos-delay="450">
-                                    <div/>
-                                </a>
+
                             </div>
                         </div>
                     </div>
